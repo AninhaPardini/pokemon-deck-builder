@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-notificacao',
   standalone: true,
+  imports: [CommonModule],
   template: `
     <div *ngIf="message" class="fixed bottom-4 right-4 bg-blue-500 text-white px-4 py-2 rounded shadow-lg notificacao">
       {{ message }}
@@ -18,13 +20,8 @@ import { Component, OnInit } from '@angular/core';
     }
   `]
 })
-export class NotificacaoComponent implements OnInit {
+export class NotificacaoComponent {
   message: string | null = null;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
   show(message: string): void {
     this.message = message;

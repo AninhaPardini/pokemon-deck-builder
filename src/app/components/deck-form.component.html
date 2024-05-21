@@ -1,4 +1,5 @@
 <div class="container mx-auto p-4 bg-gray-100 rounded-lg shadow-lg">
+  <app-notificacao></app-notificacao>
   <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">Criar/Editar Baralho</h1>
   <input [(ngModel)]="deck.name" placeholder="Nome do Baralho" class="border rounded px-3 py-2 mb-6 w-full text-lg focus:outline-none focus:ring-2 focus:ring-blue-600"/>
   
@@ -22,5 +23,5 @@
 
   <button (click)="saveDeck()" class="bg-green-600 text-white px-6 py-3 rounded block mx-auto hover:bg-green-700 transition-colors duration-200">Salvar Baralho</button>
 
-  <app-notificacao></app-notificacao>
+  
 </div>
