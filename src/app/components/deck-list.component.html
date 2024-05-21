@@ -3,7 +3,7 @@
   <button class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition-colors duration-200 mb-6" (click)="addDeck()">Criar Novo Baralho</button>
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     <div *ngFor="let deck of decks" class="border rounded-lg p-4 shadow-lg">
-      <h2 class="text-2xl font-bold mb-2">{{ deck.name }}</h2>
+      <h2 class="text-2xl font-bold mb-2">{{ deck.name || 'Novo Baralho' }}</h2>
       <div class="flex justify-between mt-4">
         <button (click)="viewDeck(deck.id)" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors duration-200">Ver Detalhes</button>
         <button (click)="editDeck(deck)" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 transition-colors duration-200">Editar</button>

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -24,8 +24,7 @@ export class DeckFormComponent implements OnInit {
   constructor(
     private pokemonService: PokemonService,
     private route: ActivatedRoute,
-    private router: Router,
-    private cdr: ChangeDetectorRef
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -71,7 +70,6 @@ export class DeckFormComponent implements OnInit {
 
     localStorage.setItem('decks', JSON.stringify(decks));
     this.notificacao.show('Baralho salvo com sucesso!');
-    this.cdr.detectChanges(); // Força a detecção de mudanças
     setTimeout(() => {
       this.router.navigate(['/']);
     }, 1500); // Espera 1.5 segundos antes de redirecionar
@@ -81,16 +79,13 @@ export class DeckFormComponent implements OnInit {
     if (this.deck.cards.filter(c => c.name === card.name).length < 4) {
       this.deck.cards.push(card);
       this.notificacao.show(`Carta "${card.name}" adicionada ao baralho!`);
-      this.cdr.detectChanges(); // Força a detecção de mudanças
     } else {
       this.notificacao.show(`Você já tem 4 cartas "${card.name}" no baralho.`);
-      this.cdr.detectChanges(); // Força a detecção de mudanças
     }
   }
 
   removeCard(card: Card): void {
     this.deck.cards = this.deck.cards.filter(c => c.id !== card.id);
     this.notificacao.show(`Carta "${card.name}" removida do baralho!`);
-    this.cdr.detectChanges(); // Força a detecção de mudanças
   }
 }
