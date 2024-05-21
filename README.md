@@ -90,6 +90,8 @@ pokemon-deck-builder/
 
 ``/edit/:id:`` Página para editar um baralho existente.
 
+``details/:id``Página de detalhes do deck.
+
 ## Contribuição
 
 1. Fork o repositório
