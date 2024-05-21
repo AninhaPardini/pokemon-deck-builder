@@ -1,0 +1,11 @@
+<div class="container mx-auto p-4">
+  <h1 class="text-2xl font-bold mb-4">Criar/Editar Baralho</h1>
+  <input [(ngModel)]="deck.name" placeholder="Nome do Baralho" class="border rounded px-2 py-1 mb-4 w-full"/>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div *ngFor="let card of cards" class="border rounded p-4">
+      <h2 class="text-xl font-bold">{{ card.name }}</h2>
+      <button (click)="addCard(card)" class="bg-blue-500 text-white px-2 py-1 rounded">Adicionar</button>
+    </div>
+  </div>
+  <button (click)="saveDeck()" class="bg-green-500 text-white px-4 py-2 rounded mt-4">Salvar Baralho</button>
+</div>

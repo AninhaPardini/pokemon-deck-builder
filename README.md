@@ -1,27 +1,57 @@
-# PokemonDeckBuilder
+# Pokemon Deck Builder
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.8.
+## Descrição
 
-## Development server
+A aplicação **Pokemon Deck Builder** permite aos jogadores criar, editar e gerenciar baralhos de cartas usando a API do Pokemon TCG. Desenvolvida em Angular 16+, Tailwind CSS e utilizando a biblioteca UI Infragistics, a aplicação fornece uma interface intuitiva para construção de baralhos com validação de regras específicas.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Tecnologias Utilizadas
 
-## Code scaffolding
+- **Angular 16+**
+- **Tailwind CSS**
+- **Ignite UI for Angular (Infragistics)**
+- **Pokemon TCG API**
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Funcionalidades
 
-## Build
+### Lista de Baralhos
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- **Visualizar Baralhos**: O usuário pode ver todos os seus baralhos.
+- **Criar Novo Baralho**: O usuário pode criar um novo baralho.
+- **Remover Baralho**: O usuário pode remover um baralho existente.
+- **Editar Baralho**: O usuário pode editar um baralho existente.
+- **Visualizar Detalhes**: O usuário pode clicar em um baralho para visualizar seus detalhes.
 
-## Running unit tests
+### Criação de um Baralho
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- **Nome do Baralho**: O usuário pode nomear seu baralho.
+- **Inserir Cartas**: O usuário pode adicionar cartas ao baralho.
+- **Limite de Cartas**: O baralho deve ter no mínimo 24 e no máximo 60 cartas.
+- **Validação de Cartas**: Apenas 4 cartas com o mesmo nome são permitidas no baralho.
+- **Salvar Baralho**: Após salvar, o usuário é redirecionado para a lista de baralhos atualizada.
+- **Armazenamento em Memória**: Os baralhos são salvos apenas em memória (localStorage).
 
-## Running end-to-end tests
+### Detalhes do Baralho
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- **Tipos de Cartas**: O usuário consegue ver quantos pokemons e cartas de treinador existem no baralho.
+- **Cores do Baralho**: O usuário consegue ver de quantas cores (types únicos) é composto o baralho.
 
-## Further help
+## Estrutura do Projeto
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```markdown
+pokemon-deck-builder/
+├── src/
+│   ├── app/
+│   │   ├── components/
+│   │   │   ├── deck-form.component.ts
+│   │   │   ├── deck-form.component.html
+│   │   │   ├── deck-list.component.ts
+│   │   │   ├── deck-list.component.html
+│   │   ├── models/
+│   │   │   ├── deck.model.ts
+│   │   ├── services/
+│   │   │   ├── pokemon.service.ts
+│   ├── main.ts
+│   ├── styles.css
+├── tailwind.config.js
+├── package.json
+└── README.md
