@@ -1,11 +1,26 @@
-<div class="container mx-auto p-4">
-  <h1 class="text-2xl font-bold mb-4">Criar/Editar Baralho</h1>
-  <input [(ngModel)]="deck.name" placeholder="Nome do Baralho" class="border rounded px-2 py-1 mb-4 w-full"/>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-    <div *ngFor="let card of cards" class="border rounded p-4">
-      <h2 class="text-xl font-bold">{{ card.name }}</h2>
-      <button (click)="addCard(card)" class="bg-blue-500 text-white px-2 py-1 rounded">Adicionar</button>
+<div class="container mx-auto p-4 bg-gray-100 rounded-lg shadow-lg">
+  <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">Criar/Editar Baralho</h1>
+  <input [(ngModel)]="deck.name" placeholder="Nome do Baralho" class="border rounded px-3 py-2 mb-6 w-full text-lg focus:outline-none focus:ring-2 focus:ring-blue-600"/>
+  
+  <h2 class="text-2xl font-semibold mb-4 text-gray-700">Adicionar Cartas</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-y-scroll h-96 mb-6">
+    <div *ngFor="let card of cards | slice:0:20" class="border rounded-lg p-4 shadow-lg bg-white">
+      <img [src]="card.images.small" alt="{{ card.name }}" class="w-full h-48 object-cover mb-4 rounded-lg">
+      <h3 class="text-xl font-bold mb-2 text-gray-800">{{ card.name }}</h3>
+      <button (click)="addCard(card)" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors duration-200 w-full">Adicionar</button>
     </div>
   </div>
-  <button (click)="saveDeck()" class="bg-green-500 text-white px-4 py-2 rounded mt-4">Salvar Baralho</button>
+  
+  <h2 class="text-2xl font-semibold mb-4 text-gray-700">Pré-visualização do Baralho</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-y-scroll h-96 mb-6">
+    <div *ngFor="let card of deck.cards" class="border rounded-lg p-4 shadow-lg bg-white">
+      <img [src]="card.images.small" alt="{{ card.name }}" class="w-full h-48 object-cover mb-4 rounded-lg">
+      <h3 class="text-xl font-bold mb-2 text-gray-800">{{ card.name }}</h3>
+      <button (click)="removeCard(card)" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition-colors duration-200 w-full">Remover</button>
+    </div>
+  </div>
+
+  <button (click)="saveDeck()" class="bg-green-600 text-white px-6 py-3 rounded block mx-auto hover:bg-green-700 transition-colors duration-200">Salvar Baralho</button>
+
+  <app-notificacao></app-notificacao>
 </div>
