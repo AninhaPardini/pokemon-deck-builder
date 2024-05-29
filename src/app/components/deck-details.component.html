@@ -1,6 +1,6 @@
 <div class="w-full h-[100vh] bg-red-700 p-4">
-  <div class="container mx-auto p-4 bg-gray-100 rounded-lg shadow-lg">
-    <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">{{ deck?.name }}</h1>
+  <div class="container mx-auto pt-4 px-6 pb-0 bg-gray-100 rounded-lg shadow-lg">
+    <h1 class="text-3xl font-bold mb-8 text-center text-gray-800">{{ deck?.name }}</h1>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6">
       <div *ngFor="let card of deck?.cards" class="">
         <img [src]="card.images.small" alt="{{ card.name }}" class="w-64 object-cover mb-4 rounded-lg">
@@ -8,7 +8,13 @@
         </div>
       </div>
     </div>
-    <button (click)="editDeck()" class="bg-yellow-500 text-white px-6 py-3 rounded mt-6 block mx-auto hover:bg-yellow-600 transition-colors duration-200">Editar Baralho</button>
+    <div class="flex w-full justify-end items-center">
+      <button (click)="editDeck()" class="bg-yellow-500 text-white p-4 flex items-center rounded-2xl gap-2 font-bold mb-6 hover:bg-yellow-600 transition-colors duration-200">
+        <igx-icon fontSet="material">edit</igx-icon>
+        Editar Baralho
+      </button>
+    </div>
+
   </div>
 </div>
 
