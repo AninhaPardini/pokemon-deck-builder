@@ -17,7 +17,7 @@ import { PokemonService } from '../service/pokemon.service';
 export class DeckFormComponent implements OnInit {
   @ViewChild(NotificacaoComponent) notificacao!: NotificacaoComponent;
 
-  deck: Deck = { id: 0, name: '', cards: [] };
+  deck: Deck = { id: 0, name: '', cards: [], types: [] };
   cards: Card[] = [];
   deckId: number | null = null;
 

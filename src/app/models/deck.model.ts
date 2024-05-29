@@ -9,8 +9,15 @@ export interface Card {
   };
 }
 
+export interface Type {
+  name: string;
+  image: string;
+  cards: Card[];
+}
+
 export interface Deck {
   id: number;
   name: string;
   cards: Card[];
+  types: Type[];
 }
