@@ -1,27 +1,45 @@
-<div class="container mx-auto p-4 bg-gray-100 rounded-lg shadow-lg">
-  <app-notificacao></app-notificacao>
-  <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">Criar/Editar Baralho</h1>
-  <input [(ngModel)]="deck.name" placeholder="Nome do Baralho" class="border rounded px-3 py-2 mb-6 w-full text-lg focus:outline-none focus:ring-2 focus:ring-blue-600"/>
-  
-  <h2 class="text-2xl font-semibold mb-4 text-gray-700">Adicionar Cartas</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-y-scroll h-96 mb-6">
-    <div *ngFor="let card of cards | slice:0:20" class="border rounded-lg p-4 shadow-lg bg-white">
-      <img [src]="card.images.small" alt="{{ card.name }}" class="w-full h-48 object-cover mb-4 rounded-lg">
-      <h3 class="text-xl font-bold mb-2 text-gray-800">{{ card.name }}</h3>
-      <button (click)="addCard(card)" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors duration-200 w-full">Adicionar</button>
-    </div>
-  </div>
-  
-  <h2 class="text-2xl font-semibold mb-4 text-gray-700">Pré-visualização do Baralho</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-y-scroll h-96 mb-6">
-    <div *ngFor="let card of deck.cards" class="border rounded-lg p-4 shadow-lg bg-white">
-      <img [src]="card.images.small" alt="{{ card.name }}" class="w-full h-48 object-cover mb-4 rounded-lg">
-      <h3 class="text-xl font-bold mb-2 text-gray-800">{{ card.name }}</h3>
-      <button (click)="removeCard(card)" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition-colors duration-200 w-full">Remover</button>
-    </div>
-  </div>
+<div class="bg-red-700 w-full h-[100vh] p-4">
+  <div class="container mx-auto p-4 bg-gray-100 rounded-2xl shadow-lg">
+    <app-notificacao></app-notificacao>
+    <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">Criar/Editar Baralho</h1>
+    <input [(ngModel)]="deck.name" placeholder="Nome do Baralho" class="border rounded px-3 py-2 mb-6 w-full text-lg focus:outline-none focus:ring-2 focus:ring-blue-600"/>
+    <div class="flex justify-center items-center gap-8">
+      <div class="w-full">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Adicionar Cartas</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-y-scroll h-96 mb-6">
+          <div *ngFor="let card of cards | slice:0:20" class="shadow-lg">
+            <img [src]="card.images.small" alt="{{ card.name }}" class="w-full mb-4">
 
-  <button (click)="saveDeck()" class="bg-green-600 text-white px-6 py-3 rounded block mx-auto hover:bg-green-700 transition-colors duration-200">Salvar Baralho</button>
+            <button (click)="addCard(card)" class="flex items-center justify-center bg-blue-600 rounded-2xl gap-2 font-bold text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors duration-200 w-full">
+              <igx-icon fontSet="material">add</igx-icon>
+              Adicionar
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="w-full">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Pré-visualização do Baralho</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-y-scroll h-96 mb-6">
+          <div *ngFor="let card of deck.cards" class="shadow-lg">
+            <img [src]="card.images.small" alt="{{ card.name }}" class="w-full mb-4">
+            <button (click)="removeCard(card)" class="flex items-center justify-center bg-red-600 text-white px-4 py-2 rounded-2xl gap-2 font-bold hover:bg-red-700 transition-colors duration-200 w-full">
+              <igx-icon>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M8.106 2.553C8.18899 2.38692 8.31658 2.24722 8.47447 2.14955C8.63237 2.05188 8.81434 2.0001 9 2H15C15.1857 2.0001 15.3676 2.05188 15.5255 2.14955C15.6834 2.24722 15.811 2.38692 15.894 2.553L17.618 6H20C20.2652 6 20.5196 6.10536 20.7071 6.29289C20.8946 6.48043 21 6.73478 21 7C21 7.26522 20.8946 7.51957 20.7071 7.70711C20.5196 7.89464 20.2652 8 20 8H19V19C19 19.7956 18.6839 20.5587 18.1213 21.1213C17.5587 21.6839 16.7956 22 16 22H8C7.20435 22 6.44129 21.6839 5.87868 21.1213C5.31607 20.5587 5 19.7956 5 19V8H4C3.73478 8 3.48043 7.89464 3.29289 7.70711C3.10536 7.51957 3 7.26522 3 7C3 6.73478 3.10536 6.48043 3.29289 6.29289C3.48043 6.10536 3.73478 6 4 6H6.382L8.106 2.553ZM14.382 4L15.382 6H8.618L9.618 4H14.382ZM11 11C11 10.7348 10.8946 10.4804 10.7071 10.2929C10.5196 10.1054 10.2652 10 10 10C9.73478 10 9.48043 10.1054 9.29289 10.2929C9.10536 10.4804 9 10.7348 9 11V17C9 17.2652 9.10536 17.5196 9.29289 17.7071C9.48043 17.8946 9.73478 18 10 18C10.2652 18 10.5196 17.8946 10.7071 17.7071C10.8946 17.5196 11 17.2652 11 17V11ZM15 11C15 10.7348 14.8946 10.4804 14.7071 10.2929C14.5196 10.1054 14.2652 10 14 10C13.7348 10 13.4804 10.1054 13.2929 10.2929C13.1054 10.4804 13 10.7348 13 11V17C13 17.2652 13.1054 17.5196 13.2929 17.7071C13.4804 17.8946 13.7348 18 14 18C14.2652 18 14.5196 17.8946 14.7071 17.7071C14.8946 17.5196 15 17.2652 15 17V11Z" fill="#FEE2E1"/>
+                </svg>
+              </igx-icon>
+              Remover
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  
+
+    <button (click)="saveDeck()" class="flex items-center justify-center bg-green-600 text-green-50 p-4 rounded-2xl gap-2 font-bold mx-auto hover:bg-green-700 transition-colors duration-200">
+      <igx-icon fontSet="material" class="text-white">save</igx-icon>
+      Salvar Baralho
+    </button>
+
+  </div>
 </div>
